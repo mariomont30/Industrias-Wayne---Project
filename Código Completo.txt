@@ -1,0 +1,1896 @@
+### index.html
+
+
+html
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Indústrias Wayne - Sistema de Gerenciamento de Segurança">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Indústrias Wayne</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="wayne_enterprises_logo.jpg" alt="Indústrias Wayne" class="logo left-logo" style="height: 90px;">
+            <div class="header-text">
+                <h1>Indústrias Wayne</h1>
+                <p>Sistema de Gerenciamento de Segurança</p><br>
+            </div>
+            <img src="wayne_enterprises_logo.jpg" alt="Indústrias Wayne" class="logo right-logo" style="height: 90px;">
+        </div>
+    </header>
+    
+    <main>
+        <div class="card-container">
+            <section id="controleAcesso" class="painel-card controle-acesso">
+                <h2 class="card-title">Controle de Acesso</h2><br>
+                <form id="formLogin">
+                    <div class="input-group">
+                        <input type="text" id="usuario" placeholder="Usuário" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="senha" placeholder="Senha" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" class="login-button">Login</button>
+                        <button type="button" class="forgot-password-button" id="esqueciSenhaButton">Esqueci a Senha</button>
+                        <button type="button" class="new-user-button" id="novoUsuarioButton">Novo Usuário</button>
+                    </div>                
+                </form>
+                <div id="displayPapelUsuario"></div>
+            </section>
+
+            <section id="userIdentification" style="display:none;" class="painel-card transparente-card">
+                <h2 class="card-title">Identificação do Usuário</h2>
+                <div id="displayPapelUsuario"></div>
+                <div id="boasVindas" style="display: none;">
+                    Bem-vindo, <span id="usuarioNome" class="usuario-nome"></span> ! <p>Você está logado como: <span id="nivelCredencial" class="nivel-credencial"></span></p> 
+                </div>  
+                <br>
+                <button type="button" class="logout-button" id="logoutButton" style="display: block; margin: 0 auto;">Sair</button>
+            </section>
+
+            <section id="cadastro" style="display:none;" class="painel-card">
+                <h2 class="card-title">Cadastro de Usuário</h2><br>
+                <form id="formCadastro">
+                    <div class="input-group">
+                        <input type="text" id="novoUsuario" placeholder="Nome de Usuário" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="emailUsuario" placeholder="E-mail" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="novaSenha" placeholder="Senha" required>
+                    </div>
+                    <div class="input-group" style="margin-bottom: 10px;"></div>
+                    <div class="input-group">
+                        <input type="password" id="confirmacaoSenha" placeholder="Confirme a Senha" required>
+                    </div>
+                    <div class="input-group">
+                        <select id="tipoUsuario" required>
+                            <option value="">Tipo de Usuário</option>
+			                <option value="administrador">Administrador</option>                            
+                            <option value="gerente">Gerente</option>
+			                <option value="funcionario">Funcionário</option>
+                            
+                        </select>
+                    </div>
+                    <div class="input-group" id="codigoAdminContainer" style="display:none;">
+                        <input type="text" id="codigoAdmin" placeholder="Digite o Código do Usuário" required>
+                    </div>
+                    <div class="button-container" style="justify-content: center;"> 
+                        <button type="button" class="register-button" id="cadastrarUsuario">Cadastrar</button>
+                        <button type="button" class="register-button" id="cancelarCadastro">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <div class="horizontal-card-container">
+                <section id="gerenciamentoRecursos" style="display:none;" class="painel-card">
+                    <h2 class="card-title" style="text-align: center;">Gerenciamento de Recursos</h2><br>
+                    <form id="formRecurso">
+                        <div class="input-group">
+                            <input type="text" id="nomeRecurso" placeholder="Nome do Recurso" required>
+                        </div>
+                        <div class="input-group">                    
+                            <select id="categoriaRecurso" required>
+                                <option value="">Categoria</option>
+                                <option value="equipamentos">Equipamentos</option>
+                                <option value="veiculos">Veículos</option>
+                                <option value="dispositivos de segurança">Dispositivos de Segurança</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" id="quantidadeRecurso" placeholder="Quantidade" required min="1">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="descricaoRecurso" placeholder="Descrição do Recurso" required>
+                        </div>
+                        <div class="input-group">
+                            <select id="prioridadeRecurso" required>
+                                <option value="">Prioridade</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Média">Média</option> 
+                                <option value="Baixa">Baixa</option>                                              
+                            </select>
+                        </div>
+                        <div class="button-container">
+                            <button type="button" class="add-button" id="adicionarRecurso">Adicionar Recurso</button>
+                            <button type="button" class="filter-button" id="filtrarRecursos">Filtrar Recursos</button>
+                            <button type="button" class="remove-button" id="removerTodosRecursos">Remover Tudo</button>
+                        </div>
+                    </form>
+                </section>
+            
+                <section id="listaRecursosCard" style="display:none;" class="painel-card">
+                    <h2 class="card-title" style="text-align: center;">Lista de Recursos</h2>
+                    <div id="listaRecursosContainer">
+                        <ul id="listaRecursos">
+                            <li>
+                                <div class="item-info">
+                                    <span class="label">Nome:</span> <span class="valor"></span><br>
+                                    <span class="label">Categoria:</span> <span class="valor"></span><br>
+                                    <span class="label">Quantidade:</span> <span class="valor"></span><br>
+                                    <span class="label">Descrição:</span> <span class="valor"></span><br>
+                                    <span class="label">Prioridade:</span> <span class="valor"></span>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="edit-button">Editar</button>
+                                    <button class="remove-button">Remover</button>
+                                </div>
+                            </li>                            
+                        </ul>
+                    </div>
+                </section>
+            
+                <section id="painelControle" style="display:none;" class="painel-card">
+                    <h2 class="card-title" style="text-align: center;">Total de Recursos</h2>
+                    <div id="graficoContainer">
+                        <canvas id="graficoRecursos"></canvas>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 - Indústrias Wayne. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <button id="voltarAoTopo" aria-label="Voltar ao topo">↑</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+### style.css
+
+
+CSS 
+
+
+:root {
+    --cor-fundo: rgba(255, 255, 255, 0.9);
+    --cor-primaria: #4CAF50;
+    --cor-secundaria: #3498DB;
+    --cor-terciaria: #e74c3c;
+    --cor-texto: #333;
+    --cor-texto-branco: #fff;
+    --cor-sombra: rgba(0, 0, 0, 0.1);
+    --cor-sombra-forte: rgba(0, 0, 0, 0.3);
+    --cor-fundo-card: rgba(206, 206, 206, 0.991);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url('thumb-1920-854825.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    max-width: 1300px;
+    margin: 20px auto;
+    margin-top: 30px;		
+    padding: 0 25px; 
+    height: 120px; 
+    background: rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid #3498DB;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 80px;
+    max-width: 150px; 
+    object-fit: contain; 
+    margin: 0 12px; 
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px; 
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 0 15px; 
+    box-sizing: border-box;
+}
+
+.header-text h1 {
+    font-size: 1.2rem; 
+    font-weight: bold;
+    margin: 0 0 3px 0; 
+    text-shadow: 0 0 10px rgba(0, 255, 191, 0.8), 0 0 20px rgba(0, 255, 191, 0.6);
+    letter-spacing: 1px;
+    color: rgb(0, 255, 191);
+}
+
+.header-text p {
+    font-size: 1.1rem; 
+    font-weight: bold;
+    margin: 0; 
+    color: #b1b0b0; 
+}
+
+.header-text h1:hover {
+    color: #3498DB; 
+    transform: scale(1.1);
+}
+
+#controleAcesso,
+#cadastro {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: 2px solid #3498DB;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#controleAcesso:hover,
+#cadastro:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.horizontal-card-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#gerenciamentoRecursos {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: 2px solid #3498DB;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;    
+}
+
+#gerenciamentoRecursos h2 {
+    margin-bottom: 1px;
+    font-size: 24px;
+}
+
+#listaRecursosCard,
+#painelControle {
+    flex: 1;
+    width: 100%;
+    height: 430px;
+    border: 2px solid #3498DB;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#gerenciamentoRecursos:hover,
+#listaRecursosCard:hover,
+#painelControle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+    flex-wrap: wrap;
+}
+
+#listaRecursosCard {    
+    height: 430px;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: auto;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #3498DB;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    gap: 20px; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+#listaRecursos {
+    color: #333;
+    transition: background-color 0.3s;
+    text-align: left;
+}
+
+#listaRecursos li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--cor-fundo);
+    margin: 5px 0;
+    height: auto;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+#listaRecursos li:first-child {
+    background-color: transparent;
+    box-shadow: 0 0 10px var(--cor-sombra-forte); 
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+#listaRecursos li:first-child:hover {
+    transform: scale(1.08); 
+    box-shadow: 0 0 20px var(--cor-sombra-forte); 
+    background-color: rgb(241, 240, 215);
+}
+
+#listaRecursos li:first-child .label {
+    font-weight: bold; 
+}
+
+#listaRecursos li:first-child .valor {
+    font-weight: normal; 
+}
+
+#listaRecursos li:not(:first-child) {
+    background-color: transparent; 
+}
+
+#listaRecursos li:not(:first-child):hover{
+    transform: scale(1.08); 
+    box-shadow: 0 0 20px var(--cor-sombra-forte); 
+    background-color: rgb(241, 240, 215);
+}
+
+#listaRecursos li:not(:first-child) .label,
+#listaRecursos li:not(:first-child) .valor {
+    font-weight: normal; 
+}
+
+.item-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+#boasVindas {
+    background-color: #f0f8ff;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    border: 2px solid #3498DB;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    display: none;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3 ease;
+}
+
+#boasVindas:hover {
+    transform: scale(1.05);
+}
+
+#boasVindas h2,
+#boasVindas p {
+    margin: 5px 0;
+}
+
+#boasVindas h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+#boasVindas p {
+    font-size: 18px;
+    color: #333;
+}
+
+#boasVindas p::after {
+    content: ".";
+}
+
+#boasVindas .mensagem {
+    font-size: 18px;
+    color: var(--cor-primaria);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 400px;
+}
+
+#painelControle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 20px var(--cor-sombra);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#userIdentification {
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: 2px solid #3498DB;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#userIdentification:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+#graficoContainer {
+    width: 100%;
+    height: calc(89% - 20px);
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(114, 255, 123, 0.861), rgba(34, 193, 195, 0.9));
+    border-radius: 8px;
+    border: 2px solid #3498DB;
+    padding: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#graficoRecursos {
+    max-width: 100%;
+    max-height: 100%;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #34495e;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}
+
+.usuario-nome {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.nivel-credencial {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nivel-credencial.administrador {
+    color: #FF5733;
+}
+
+.nivel-credencial.gerente {
+    color: #3498DB;
+}
+
+.nivel-credencial.funcionario {
+    color: #e29b03;
+}
+
+.resource-card {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.add-button:hover {
+    background-color: #388E3C;
+}
+
+.filter-button {
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #2E86C1;
+}
+
+.remove-button {
+    background-color: #f70303;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+    background-color: #d32f2f;
+}
+
+.edit-button {
+    background-color: #368703;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #2ab300;
+}
+
+.login-button {
+    background-color: #7282fff3;
+}
+
+.login-button:hover {
+    background-color: #005f36;
+}
+
+.forgot-password-button {
+    background-color: #7282fff3;
+}
+
+.forgot-password-button:hover {
+    background-color: #005f36;
+}
+
+.new-user-button {
+    background-color: #7282fff3;
+}
+
+.new-user-button:hover {
+    background-color: #005f36;
+}
+
+.register-button {
+    background-color: #7282fff3;
+}
+
+.register-button:hover {
+    background-color: #005f36;
+}
+
+.logout-button {
+    background-color: #e91e36;
+}
+
+.logout-button:hover {
+    background-color: #d81b1b;
+}
+
+button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.edit-button, .remove-button {
+    margin-left: 10px;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.painel-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    height: 430px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px var(--cor-sombra);
+    background: rgba(206, 206, 206, 0.991);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    padding: 5px;
+    color: #333;
+}
+
+#gerenciamentoRecursos,
+#painelControle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+#listaRecursosCard,
+#painelControle { 
+    height: 477px;
+}
+
+.transparente-card {
+    background: transparent;
+    transition: background-color 0.3s;
+}
+
+.transparente-card:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.painel-card h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #043d34;
+    text-align: center;
+}
+
+.card-title {
+    background-color: lightblue;
+    border: 2px solid #3498DB;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #e74c3c;
+}
+
+.footer-content {
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: transparent;
+}
+
+#graficoContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}
+
+#voltarAoTopo {
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+    background: linear-gradient(135deg, rgba(10, 245, 237, 0.8), rgba(9, 94, 178, 0.8));
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+#voltarAoTopo:hover {
+    background: linear-gradient(135deg, rgba(9, 94, 178, 0.9), rgba(10, 245, 237, 0.9));
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 1024px) {
+    .header-container {
+        padding: 30px;
+    }
+    .header-text h1 {
+        font-size: 64px;
+    }
+    .horizontal-card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 400px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header-container {
+        padding: 20px;
+    }
+    .header-text h1 {
+        font-size: 48px;
+    }
+    .horizontal-card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 350px;
+    }
+    .card-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+    .header-text h1 {
+        font-size: 32px;
+    }
+    .horizontal-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    #gerenciamentoRecursos h2 {
+        margin-bottom: 1px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 10px;
+    }
+    .header-text h1 {
+        font-size: 24px;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 100%;
+        padding: 15px;
+    }
+    .card-container {
+        margin: 10px;
+    }
+    #listaRecursos li {
+        font-size: 16px;
+    }
+    .item-info {
+        font-size: 12px;
+    }
+}
+
+
+
+
+### script.js
+
+
+Javascript 
+
+
+let usuarios = [];
+let recursos = [];
+let usuarioLogado = null;
+let graficoAtual = null;
+
+const carregarUsuarios = () => {
+    const usuariosSalvos = localStorage.getItem('usuarios');
+    if (usuariosSalvos) {
+        usuarios = JSON.parse(usuariosSalvos);
+    }
+};
+
+const carregarRecursos = () => {
+    const recursosSalvos = localStorage.getItem('recursos');
+    if (recursosSalvos) {
+        recursos = JSON.parse(recursosSalvos);
+    }
+};
+
+const cadastrarUsuario = (usuario, senha, confirmacaoSenha, tipo, email, codigoAdmin) => {
+    if (!usuario || !senha || !confirmacaoSenha || !tipo || !email) {
+        alert("Todos os campos devem ser preenchidos!");
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Por favor, insira um email válido!");
+        return;
+    }
+
+    if (senha !== confirmacaoSenha) {
+        alert("As senhas não coincidem!");
+        return;
+    }
+
+    const usuarioExistente = usuarios.find(u => u.nome === usuario);
+    const emailExistente = usuarios.find(u => u.email === email);
+    
+    if (usuarioExistente) {
+        alert("Já existe um usuário cadastrado com este nome!");
+        return;
+    }
+
+    if (emailExistente) {
+        alert("Já existe um usuário cadastrado com este email!");
+        return;
+    }
+
+    if ((tipo === "administrador" || tipo === "gerente" || tipo === "funcionario") && !codigoAdmin) {
+        alert("O campo 'Código do Usuário' deve ser preenchido.");
+        return;
+    }
+
+    usuarios.push({ nome: usuario, senha, tipo, email, codigoAdmin });
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    alert("Cadastro realizado com sucesso!");
+
+    document.querySelector("#novoUsuario").value = '';
+    document.querySelector("#emailUsuario").value = '';
+    document.querySelector("#novaSenha").value = '';
+    document.querySelector("#confirmacaoSenha").value = '';
+    document.querySelector("#tipoUsuario").value = '';
+    document.querySelector("#codigoAdmin").value = '';
+
+    document.querySelector("#cadastro").style.display = "none";
+    document.querySelector("#controleAcesso").style.display = "block";
+    document.querySelector("#usuario").value = '';
+    document.querySelector("#senha").value = '';
+};
+
+document.querySelector("#cancelarCadastro").addEventListener("click", () => {
+    if (confirm("Tem certeza que deseja cancelar? Todos os dados serão perdidos.")) {
+        document.querySelector("#novoUsuario").value = '';
+        document.querySelector("#emailUsuario").value = '';
+        document.querySelector("#novaSenha").value = '';
+        document.querySelector("#confirmacaoSenha").value = '';
+        document.querySelector("#codigoAdmin").value = '';
+        document.querySelector("#tipoUsuario").value = '';
+
+        document.querySelector("#controleAcesso").style.display = "block";
+        document.querySelector("#cadastro").style.display = "none";
+        document.querySelector("#usuario").value = '';
+        document.querySelector("#senha").value = '';
+    } else {
+        document.querySelector("#cadastro").style.display = "block";
+    }
+});
+
+const esqueciSenhaButton = document.querySelector('#esqueciSenhaButton');
+
+esqueciSenhaButton.addEventListener('click', () => {
+    let emailDigitado;
+    do {
+        emailDigitado = prompt('Digite seu e-mail cadastrado:');
+        if (emailDigitado === null) {
+            return;
+        }
+        if (emailDigitado.trim() === '') {
+            alert('O e-mail não pode ser vazio. Tente novamente.');
+        }
+    } while (emailDigitado === null || emailDigitado.trim() === '' || !tratarRecuperacaoSenha(emailDigitado));
+});
+
+const tratarRecuperacaoSenha = (email) => {
+    const usuarioEncontrado = usuarios.find(usuario => usuario.email === email);
+    
+    if (usuarioEncontrado) {
+        alert(`Instruções para recuperação de senha foram enviadas para o e-mail: ${usuarioEncontrado.email}`);
+        return true; 
+    } else {
+        alert('E-mail não encontrado. Por favor, verifique e tente novamente.');
+        return false; 
+    }
+};
+
+const adicionarRecurso = () => {
+    const nome = document.querySelector("#nomeRecurso").value;
+    const categoria = document.querySelector("#categoriaRecurso").value;
+    const quantidade = document.querySelector("#quantidadeRecurso").value;
+    const descricao = document.querySelector("#descricaoRecurso").value;
+    const prioridade = document.querySelector("#prioridadeRecurso").value;
+
+    const capitalizar = (str) => {
+        if (str.toLowerCase() === "dispositivos de segurança") {
+            return "Dispositivos de Segurança";
+        }
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    };
+
+    if (!nome || !categoria || !quantidade || !descricao || !prioridade) {
+        alert("Por favor, preencha todos os campos do Gerenciamento de Recursos.");
+        return;
+    }
+
+    const recursoExistente = recursos.find(recurso => recurso.nome.toLowerCase() === capitalizar(nome).toLowerCase());
+    if (recursoExistente) {
+        alert(`O recurso "${capitalizar(nome)}" já está cadastrado.`);
+        limparCampos();
+        return; 
+    }
+
+    const novoRecurso = {
+        nome: capitalizar(nome),
+        categoria: capitalizar(categoria),
+        quantidade: parseInt(quantidade),
+        descricao: capitalizar(descricao),
+        prioridade: capitalizar(prioridade)
+    };
+
+    recursos.unshift(novoRecurso);
+    localStorage.setItem('recursos', JSON.stringify(recursos));
+    atualizarListaRecursos();
+    document.querySelector("#listaRecursosCard").style.display = "block";
+    alert("Recurso adicionado com sucesso!");
+    limparCampos();
+    atualizarGrafico(novoRecurso.nome, novoRecurso.quantidade);
+};
+
+const limparCampos = () => {
+    document.querySelector("#nomeRecurso").value = '';
+    document.querySelector("#categoriaRecurso").value = '';
+    document.querySelector("#quantidadeRecurso").value = '';
+    document.querySelector("#descricaoRecurso").value = '';
+    document.querySelector("#prioridadeRecurso").value = '';
+};
+
+const capitalizar = texto => texto.charAt(0).toUpperCase() + texto.slice(1);
+
+const verificarIndiceValido = (indice, limite) => {
+    const numero = parseInt(indice);
+    return !isNaN(numero) && numero > 0 && numero <= limite;
+};
+
+const editarRecurso = (nome, usuario) => {
+    document.querySelector("#nomeRecurso").value = "";
+    document.querySelector("#categoriaRecurso").value = "";
+    document.querySelector("#quantidadeRecurso").value = "";
+    document.querySelector("#descricaoRecurso").value = "";
+    document.querySelector("#prioridadeRecurso").value = "";
+
+    if (usuario.tipo !== "administrador" && usuario.tipo !== "gerente") {
+        alert("Apenas Administradores e Gerentes podem editar recursos.");
+        return;
+    }
+
+    const recurso = recursos.find(r => r.nome.toLowerCase() === nome.toLowerCase());
+    if (recurso) {
+        const campos = [
+            "Nome",
+            "Categoria",
+            "Quantidade",
+            "Descrição",
+            "Prioridade",
+            "Todos"
+        ];
+
+        let alterado = false;
+
+        while (true) {
+            const campoEscolhidoPrompt = campos.map((campo, index) => `${index + 1}: Editar ${campo}`).join("\n");
+            const campoEscolhido = prompt(`Escolha qual campo deseja editar:\n${campoEscolhidoPrompt}`);
+
+            if (campoEscolhido === null) {
+                if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                    alert("Edição cancelada. Nenhuma alteração foi feita.");
+                    return;
+                } else {
+                    continue;
+                }
+            }
+
+            if (campoEscolhido.trim() === "") {
+                alert("Opção inválida. Por favor escolha um número de 1 a 6.");
+                continue;
+            }
+
+            const categorias = ["Equipamentos", "Veículos", "Dispositivos de Segurança", "Outros"];
+            const prioridades = ["Alta", "Média", "Baixa"];
+
+            switch (campoEscolhido) {
+                case "1": 
+                    let novoNome;
+                    while (true) {
+                        novoNome = prompt(`Digite o novo nome do recurso (não pode estar em branco):`);
+                        if (novoNome === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (novoNome.trim() === "") {
+                            alert("Por favor, altere o nome do recurso.");
+                        } else if (recursos.some(r => r.nome.toLowerCase() === capitalizar(novoNome).toLowerCase())) {
+                            alert("Já existe um recurso cadastrado com este nome. A edição não pode ser realizada.");
+                        } else {
+                            recurso.nome = capitalizar(novoNome);
+                            alterado = true;
+                            break; 
+                        }
+                    }
+                    break;
+
+                case "2": 
+                    const categoriaPrompt = categorias.map((cat, index) => `${index + 1}: ${cat}`).join("\n");
+                    let categoriaEscolhida;
+                    while (true) {
+                        categoriaEscolhida = prompt(`Escolha a nova categoria do recurso:\n${categoriaPrompt}`);
+                        if (categoriaEscolhida === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (!verificarIndiceValido(categoriaEscolhida, categorias.length)) {
+                            alert("Categoria inválida. Tente novamente.");
+                        } else {
+                            recurso.categoria = categorias[parseInt(categoriaEscolhida) - 1];
+                            alterado = true;
+                            break; 
+                        }
+                    }
+                    break;
+
+                case "3": 
+                    let novaQuantidade;
+                    while (true) {
+                        novaQuantidade = prompt(`Digite a nova quantidade do recurso (número positivo):`);
+                        if (novaQuantidade === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (novaQuantidade.trim() === "") {
+                            alert("Por favor, digite um número positivo para a quantidade.");
+                        } else {
+                            const quantidadeConvertida = parseInt(novaQuantidade);
+                            if (!isNaN(quantidadeConvertida) && quantidadeConvertida > 0) {
+                                recurso.quantidade = quantidadeConvertida;
+                                alterado = true;
+                                break; 
+                            } else {
+                                alert("A quantidade deve ser um número positivo. Tente novamente.");
+                            }
+                        }
+                    }
+                    break;
+
+                case "4": 
+                    let novaDescricao;
+                    while (true) {
+                        novaDescricao = prompt(`Digite a nova descrição do recurso (não pode estar em branco):`);
+                        if (novaDescricao === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (novaDescricao.trim() === "") {
+                            alert("Por favor, altere a descrição do recurso.");
+                        } else if (recursos.some(r => r.descricao.toLowerCase() === capitalizar(novaDescricao).toLowerCase())) {
+                            alert("Já existe um recurso cadastrado com esta descrição. A edição não pode ser realizada.");
+                        } else {
+                            recurso.descricao = capitalizar(novaDescricao);
+                            alterado = true;
+                            break; 
+                        }
+                    }
+                    break;
+
+                case "5": 
+                    let prioridadeEscolhida;
+                    const prioridadePrompt = prioridades.map((pri, index) => `${index + 1}: ${pri}`).join("\n");
+                    while (true) {
+                        prioridadeEscolhida = prompt(`Escolha a nova prioridade do recurso:\n${prioridadePrompt}`);
+                        if (prioridadeEscolhida === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (!verificarIndiceValido(prioridadeEscolhida, prioridades.length)) {
+                            alert("Prioridade inválida. Tente novamente.");
+                        } else {
+                            recurso.prioridade = prioridades[parseInt(prioridadeEscolhida) - 1];
+                            alterado = true;
+                            break; 
+                        }
+                    }
+                    break;
+
+                case "6": 
+                    let novoNomeTodos;
+                    while (true) {
+                        novoNomeTodos = prompt(`Digite o novo nome do recurso (não pode estar em branco):`);
+                        if (novoNomeTodos === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (novoNomeTodos.trim() === "") {
+                            alert("Por favor, altere o nome do recurso.");
+                        } else if (recursos.some(r => r.nome.toLowerCase() === capitalizar(novoNomeTodos).toLowerCase())) {
+                            alert("Já existe um recurso cadastrado com este nome. A edição não pode ser realizada.");
+                        } else {
+                            recurso.nome = capitalizar(novoNomeTodos);
+                            alterado = true;
+                            break; 
+                        }
+                    }
+
+                    const categoriaPromptTodos = categorias.map((cat, index) => `${index + 1}: ${cat}`).join("\n");
+                    let categoriaEscolhidaTodos;
+                    while (true) {
+                        categoriaEscolhidaTodos = prompt(`Escolha a nova categoria do recurso:\n${categoriaPromptTodos}`);
+                        if (categoriaEscolhidaTodos === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (!verificarIndiceValido(categoriaEscolhidaTodos, categorias.length)) {
+                            alert("Categoria inválida. Tente novamente.");
+                        } else {
+                            recurso.categoria = categorias[parseInt(categoriaEscolhidaTodos) - 1];
+                            alterado = true;
+                            break; 
+                        }
+                    }
+
+                    let novaQuantidadeTodos;
+                    while (true) {
+                        novaQuantidadeTodos = prompt(`Digite a nova quantidade do recurso (número positivo):`);
+                        if (novaQuantidadeTodos === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (novaQuantidadeTodos.trim() === "") {
+                            alert("Por favor, digite um número positivo para a quantidade.");
+                        } else {
+                            const quantidadeConvertidaTodos = parseInt(novaQuantidadeTodos);
+                            if (!isNaN(quantidadeConvertidaTodos) && quantidadeConvertidaTodos > 0) {
+                                recurso.quantidade = quantidadeConvertidaTodos;
+                                alterado = true;
+                                break; 
+                            } else {
+                                alert("A quantidade deve ser um número positivo. Tente novamente.");
+                            }
+                        }
+                    }
+
+                    let novaDescricaoTodos;
+                    while (true) {
+                        novaDescricaoTodos = prompt(`Digite a nova descrição do recurso (não pode estar em branco):`);
+                        if (novaDescricaoTodos === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (novaDescricaoTodos.trim() === "") {
+                            alert("Por favor, altere a descrição do recurso.");
+                        } else if (recursos.some(r => r.descricao.toLowerCase() === capitalizar(novaDescricaoTodos).toLowerCase())) {
+                            alert("Já existe um recurso cadastrado com esta descrição. A edição não pode ser realizada.");
+                        } else {
+                            recurso.descricao = capitalizar(novaDescricaoTodos);
+                            alterado = true;
+                            break; 
+                        }
+                    }
+
+                    let prioridadeEscolhidaTodos;
+                    const prioridadePromptTodos = prioridades.map((pri, index) => `${index + 1}: ${pri}`).join("\n");
+                    while (true) {
+                        prioridadeEscolhidaTodos = prompt(`Escolha a nova prioridade do recurso:\n${prioridadePromptTodos}`);
+                        if (prioridadeEscolhidaTodos === null) {
+                            if (confirm("Você tem certeza que deseja cancelar a edição?")) {
+                                alert("Edição cancelada. Nenhuma alteração foi feita.");
+                                return;
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (!verificarIndiceValido(prioridadeEscolhidaTodos, prioridades.length)) {
+                            alert("Prioridade inválida. Tente novamente.");
+                        } else {
+                            recurso.prioridade = prioridades[parseInt(prioridadeEscolhidaTodos) - 1];
+                            alterado = true;
+                            break; 
+                        }
+                    }
+                    break;
+
+                default:
+                    alert("Opção inválida. Por favor escolha um número de 1 a 6.");
+                    continue;
+            }
+
+            if (alterado) {
+                localStorage.setItem('recursos', JSON.stringify(recursos));
+                atualizarListaRecursos();
+                atualizarGrafico();
+                alert("Recurso editado com sucesso.");
+                break;
+            } else {
+                alert("Nenhum campo foi alterado. Voltando ao menu de edição.");
+            }
+        }
+    } else {
+        alert("Recurso não encontrado.");
+    }
+};
+
+const removerRecurso = (nome, usuario) => {
+    document.querySelector("#nomeRecurso").value = "";
+    document.querySelector("#categoriaRecurso").value = "";
+    document.querySelector("#quantidadeRecurso").value = "";
+    document.querySelector("#descricaoRecurso").value = "";
+    document.querySelector("#prioridadeRecurso").value = "";
+
+    if (usuario.tipo !== "administrador") {
+        alert("Apenas Administradores podem remover recursos.");
+        return;
+    }
+
+    if (confirm(`Tem certeza que deseja remover o recurso "${nome}"?`)) {
+        recursos = recursos.filter(recurso => recurso.nome !== nome);
+        localStorage.setItem('recursos', JSON.stringify(recursos));
+        atualizarListaRecursos();
+        atualizarGrafico();
+    }
+};
+
+const acionarEditarRecurso = (nome, usuario) => {
+    if (usuario.tipo !== "administrador" || usuario.tipo !== 'gerente') {
+        alert("Apenas Administradores e Gerentes podem editar recursos.");
+        return;
+    }
+    editarRecurso(nome, usuario);
+};
+
+const acionarRemoverRecurso = (nome, usuario) => {
+    if (usuario.tipo !== "administrador") {
+        alert("Apenas Administradores podem remover recursos.");
+        return;
+    }
+    removerRecurso(nome, usuario);
+};
+
+const fazerLogin = () => {
+    const usuario = document.querySelector("#usuario").value;
+    const senha = document.querySelector("#senha").value;
+
+    if (!usuario || !senha) {
+        alert("Por favor, preencha ambos os campos de usuário e senha.");
+        return;
+    }
+
+    const usuarioAutenticado = usuarios.find(u => u.nome === usuario && u.senha === senha);
+    if (usuarioAutenticado) {
+        usuarioLogado = usuarioAutenticado;
+
+        const nomeFormatado = usuarioLogado.nome.charAt(0).toUpperCase() + usuarioLogado.nome.slice(1).toLowerCase();
+        
+        const tipoFormatado = usuarioLogado.tipo === "funcionario" 
+            ? "Funcionário" 
+            : usuarioLogado.tipo.charAt(0).toUpperCase() + usuarioLogado.tipo.slice(1).toLowerCase();
+        
+        document.querySelector("#boasVindas").innerHTML = `
+            Bem-vindo, <span id="usuarioNome" class="usuario-nome">${nomeFormatado}</span> !
+            <p>Você está logado como: <span id="nivelCredencial" class="nivel-credencial ${usuarioLogado.tipo}">${tipoFormatado}</span> ..</p>
+        `;
+
+        exibirPainel(usuarioAutenticado.tipo);
+        document.querySelector("#boasVindas").style.display = "block";
+        document.querySelector("#userIdentification").style.display = "block";
+        document.querySelector("#listaRecursosCard").style.display = "block";
+    } else {
+        alert("Usuário ou senha incorretos.");
+    }
+};
+
+const exibirPainel = (tipo) => {
+    document.querySelector("#controleAcesso").style.display = "none";
+    document.querySelector("#gerenciamentoRecursos").style.display = "none";
+    document.querySelector("#painelControle").style.display = "none";
+
+    if (tipo === "administrador" || tipo === "gerente" || tipo === "funcionario") {
+        alert(`Você tem Acesso: ${tipo === "administrador" ? 'Total ao Sistema' : (tipo === "gerente" ? 'Intermediário ao Sistema' : 'Restrito ao Sistma')}.`);
+
+        document.querySelector("#painelControle").style.display = "block";
+        document.querySelector("#gerenciamentoRecursos").style.display = "block";
+    }
+
+    atualizarListaRecursos();
+    atualizarGrafico();
+};
+
+const fazerLogout = () => {
+    if (confirm("Tem certeza que deseja sair?")) {
+        usuarioLogado = null;
+        document.querySelector("#usuario").value = ''; 
+        document.querySelector("#senha").value = ''; 
+        document.querySelector("#controleAcesso").style.display = "block";
+        document.querySelector("#userIdentification").style.display = "none";
+        document.querySelector("#gerenciamentoRecursos").style.display = "none";
+        document.querySelector("#painelControle").style.display = "none";
+        document.querySelector("#cadastro").style.display = "none";
+        document.querySelector("#listaRecursosCard").style.display ="none";
+    }
+};
+
+const filtrarRecursos = () => {
+    document.querySelector("#nomeRecurso").value = "";
+    document.querySelector("#categoriaRecurso").value = "";
+    document.querySelector("#quantidadeRecurso").value = "";
+    document.querySelector("#descricaoRecurso").value = "";
+    document.querySelector("#prioridadeRecurso").value = "";
+
+    let opcao = prompt(
+        "Escolha o critério de filtragem:\n" +
+        "1. Nome\n" +
+        "2. Categoria\n" +
+        "3. Quantidade\n" +
+        "4. Descrição\n" +
+        "5. Prioridade\n" +
+        "6. Mostrar todos os recursos\n" +
+        "Digite o número correspondente ao critério desejado:"
+    );
+
+    if (opcao === null) {
+        alert("Filtragem cancelada.");
+        return;
+    }
+
+    if (!/^[1-6]$/.test(opcao)) {
+        alert("Entrada inválida! Por favor, insira um número de 1 a 6.");
+        return filtrarRecursos(); 
+    }
+
+    let recursosFiltrados = recursos;
+
+    switch (opcao) {
+        case "1":
+            let filtragemNome;
+            do {
+                filtragemNome = prompt("Digite o nome exato do recurso para filtrar:");
+                if (filtragemNome === null) {
+                    alert("Filtragem cancelada.");
+                    return;
+                }
+                filtragemNome = filtragemNome.trim().toLowerCase();
+
+                if (filtragemNome === "") {
+                    alert("Nome não pode estar vazio. Por favor, insira um nome válido.");
+                }
+            } while (filtragemNome === "");
+            recursosFiltrados = recursosFiltrados.filter(recurso =>
+                recurso.nome.toLowerCase() === filtragemNome
+            );
+            break;
+
+        case "2":
+            let categoriaEscolha;
+            do {
+                categoriaEscolha = prompt(
+                    "Escolha a categoria do recurso:\n" +
+                    "1. Equipamentos\n" +
+                    "2. Veículos\n" +
+                    "3. Dispositivos de Segurança\n" +
+                    "4. Outros\n"
+                );
+                if (categoriaEscolha === null) {
+                    alert("Filtragem cancelada.");
+                    return;
+                }
+                if (!["1", "2", "3", "4"].includes(categoriaEscolha)) {
+                    alert("Categoria inválida! Por favor, escolha uma categoria válida.");
+                }
+            } while (!["1", "2", "3", "4"].includes(categoriaEscolha));
+
+            let filtragemCategoria;
+            switch (categoriaEscolha) {
+                case "1":
+                    filtragemCategoria = "Equipamentos";
+                    break;
+                case "2":
+                    filtragemCategoria = "Veículos";
+                    break;
+                case "3":
+                    filtragemCategoria = "Dispositivos de Segurança";
+                    break;
+                case "4":
+                    filtragemCategoria = "Outros";
+                    break;
+            }
+
+            recursosFiltrados = recursosFiltrados.filter(recurso =>
+                recurso.categoria === filtragemCategoria
+            );
+            break;
+
+        case "3":
+            let filtragemQuantidade;
+            do {
+                filtragemQuantidade = prompt("Digite a quantidade do recurso para filtrar (apenas números):");
+                if (filtragemQuantidade === null) {
+                    alert("Filtragem cancelada.");
+                    return;
+                }
+                if (isNaN(filtragemQuantidade) || filtragemQuantidade === "") {
+                    alert("Quantidade inválida! Por favor, insira um número válido.");
+                }
+            } while (isNaN(filtragemQuantidade) || filtragemQuantidade === "");
+            filtragemQuantidade = parseInt(filtragemQuantidade, 10);
+            recursosFiltrados = recursosFiltrados.filter(recurso =>
+                recurso.quantidade === filtragemQuantidade
+            );
+            break;
+
+        case "4":
+            let filtragemDescricao;
+            do {
+                filtragemDescricao = prompt("Digite a descrição exata do recurso para filtrar:");
+                if (filtragemDescricao === null) {
+                    alert("Filtragem cancelada.");
+                    return;
+                }
+                filtragemDescricao = filtragemDescricao.trim().toLowerCase();
+
+                if (filtragemDescricao === "") {
+                    alert("Descrição não pode estar vazia. Por favor, insira uma descrição válida.");
+                }
+            } while (filtragemDescricao === "");
+            recursosFiltrados = recursosFiltrados.filter(recurso =>
+                recurso.descricao.toLowerCase() === filtragemDescricao
+            );
+            break;
+
+        case "5":
+            let prioridadeEscolha;
+            do {
+                prioridadeEscolha = prompt(
+                    "Escolha a prioridade do recurso:\n" +
+                    "1. Alta\n" +
+                    "2. Média\n" +
+                    "3. Baixa\n"
+                );
+                if (prioridadeEscolha === null) {
+                    alert("Filtragem cancelada.");
+                    return;
+                }
+                if (!["1", "2", "3"].includes(prioridadeEscolha)) {
+                    alert("Prioridade inválida! Por favor, escolha uma prioridade válida.");
+                }
+            } while (!["1", "2", "3"].includes(prioridadeEscolha));
+
+            let filtragemPrioridade;
+            switch (prioridadeEscolha) {
+                case "1":
+                    filtragemPrioridade = "Alta";
+                    break;
+                case "2":
+                    filtragemPrioridade = "Média";
+                    break;
+                case "3":
+                    filtragemPrioridade = "Baixa";
+                    break;
+            }
+
+            recursosFiltrados = recursosFiltrados.filter(recurso =>
+                recurso.prioridade === filtragemPrioridade
+            );
+            break;
+
+        case "6":            
+            recursosFiltrados = recursos;
+            break;
+
+        default:
+            alert("Opção inválida.");
+            return;
+    }
+
+    if (recursosFiltrados.length === 0) {
+        alert("Nenhum recurso encontrado com o critério de filtragem adotado.");
+        return filtrarRecursos(); 
+    } else {
+        alert(`Filtragem concluída com sucesso! ${recursosFiltrados.length} recursos encontrados.`);
+        atualizarListaRecursos(recursosFiltrados); 
+    }
+};
+
+const atualizarListaRecursos = (lista = recursos) => {
+    const listaRecursos = document.querySelector("#listaRecursos");
+    listaRecursos.innerHTML = '';
+
+    lista.forEach(recurso => {
+        const item = document.createElement("li");
+        item.style.display = 'flex';
+        item.style.justifyContent = 'space-between';
+        item.style.alignItems = 'center';
+
+        const detalhesRecurso = document.createElement("div");
+        detalhesRecurso.innerHTML = `
+            <strong>Nome:</strong> ${recurso.nome}<br>
+            <strong>Categoria:</strong> ${recurso.categoria}<br>
+            <strong>Quantidade:</strong> ${recurso.quantidade}<br>
+            <strong>Descrição:</strong> ${recurso.descricao}<br>
+            <strong>Prioridade:</strong> ${recurso.prioridade}
+        `;
+        
+        item.appendChild(detalhesRecurso);
+        
+        const botoesContainer = document.createElement("div");
+        botoesContainer.style.display = 'flex';
+        botoesContainer.style.gap = '10px';
+
+        const editarBtn = document.createElement("button");
+        editarBtn.className = "edit-button";
+        editarBtn.textContent = "Editar";
+        editarBtn.onclick = () => {
+            if (usuarioLogado && usuarioLogado.tipo === "administrador" || usuarioLogado.tipo === 'gerente') {
+                editarRecurso(recurso.nome, usuarioLogado);
+            } else {
+                alert("Apenas Administradores e Gerentes podem editar recursos.");
+            }
+        };
+
+        const removerBtn = document.createElement("button");
+        removerBtn.className = "remove-button"; 
+        removerBtn.textContent = "Remover";
+        removerBtn.onclick = () => {
+            if (usuarioLogado && usuarioLogado.tipo === "administrador") {
+                removerRecurso(recurso.nome, usuarioLogado);
+            } else {
+                alert("Apenas Administradores podem remover recursos.");
+            }
+        };
+
+        botoesContainer.appendChild(editarBtn);
+        botoesContainer.appendChild(removerBtn);
+        item.appendChild(botoesContainer);
+        listaRecursos.appendChild(item);
+    });
+}; 
+
+const atualizarGrafico = () => {
+    const graficoContainer = document.querySelector("#graficoContainer"); 
+    graficoContainer.innerHTML = ""; 
+
+    const canvas = document.createElement("canvas");
+    canvas.id = 'graficoRecursos';
+    graficoContainer.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    const labels = recursos.map(recurso => recurso.nome);
+    const data = recursos.map(recurso => recurso.quantidade);
+
+    if (graficoAtual) {
+        graficoAtual.destroy();
+    }
+
+    graficoAtual = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Quantidade de Recursos',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(231, 76, 60, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            animation: {
+                duration: 1000,
+                easing: 'easeOutBounce'
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+};
+
+document.querySelector("#filtrarRecursos").addEventListener("click", filtrarRecursos);
+
+document.querySelector("#tipoUsuario").addEventListener("change", (e) => {
+    const tipoSelecionado = e.target.value;
+    const codigoAdminContainer = document.querySelector("#codigoAdminContainer");
+    codigoAdminContainer.style.display = ["administrador", "gerente", "funcionario"].includes(tipoSelecionado) ? "block" : "none";
+});
+
+document.querySelector("#adicionarRecurso").addEventListener("click", () => {
+    const usuarioTipo = usuarioLogado?.tipo;
+    if (usuarioTipo === 'administrador' || usuarioTipo === 'gerente') {
+        adicionarRecurso();
+    } else {
+        alert("Apenas Administradores e Gerentes podem adicionar recursos.");
+    }
+});
+
+document.querySelector("#logoutButton").addEventListener("click", fazerLogout);
+
+document.querySelector("#voltarAoTopo").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener("scroll", () => {
+    const button = document.querySelector("#voltarAoTopo");
+    button.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? "block" : "none";
+});
+
+document.querySelector("#novoUsuarioButton").addEventListener("click", () => {
+    document.querySelector("#controleAcesso").style.display = "none";
+    document.querySelector("#cadastro").style.display = "block";
+});
+
+document.querySelector("#cadastrarUsuario").addEventListener("click", () => {
+    const usuario = document.querySelector("#novoUsuario").value.trim();
+    const email = document.querySelector("#emailUsuario").value.trim();
+    const senha = document.querySelector("#novaSenha").value;
+    const confirmacaoSenha = document.querySelector("#confirmacaoSenha").value;
+    const codigoAdmin = document.querySelector("#codigoAdmin").value.trim();
+    const tipoUsuario = document.querySelector("#tipoUsuario").value;
+
+    let mensagensErro = [];
+
+    if (!usuario) {
+        mensagensErro.push("O campo 'Nome de Usuário' deve ser preenchido.");
+    }
+    if (!email) {
+        mensagensErro.push("O campo 'Email' deve ser preenchido.");
+    }
+    if (!senha) {
+        mensagensErro.push("O campo 'Senha' deve ser preenchido.");
+    }
+    if (!confirmacaoSenha) {
+        mensagensErro.push("O campo 'Confirmação de Senha' deve ser preenchido.");
+    }
+    if (!codigoAdmin && (tipoUsuario === "administrador" || tipoUsuario === "gerente" || tipoUsuario === "funcionario")) {
+        mensagensErro.push("O campo 'Código do Usuário' deve ser preenchido.");
+    }
+
+    if (mensagensErro.length > 0) {
+        alert(mensagensErro.join("\n"));
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Por favor, insira um email válido!");
+        return;
+    }
+
+    if (senha !== confirmacaoSenha) {
+        alert("As senhas não coincidem!");
+        return;
+    }
+
+    cadastrarUsuario(usuario, senha, confirmacaoSenha, tipoUsuario, email, codigoAdmin);
+});
+
+document.querySelector("#formLogin").addEventListener("submit", function(event) {
+    event.preventDefault();
+    fazerLogin();
+});
+
+document.querySelector("#removerTodosRecursos").addEventListener("click", () => {
+    if (!usuarioLogado || usuarioLogado.tipo !== "administrador") {
+        alert("Apenas Administradores podem remover todos os recursos.");
+        return;
+    }
+
+    if (confirm("Tem certeza que deseja remover todos os recursos? Esta ação não poderá ser desfeita.")) {
+        recursos = [];
+        localStorage.setItem('recursos', JSON.stringify(recursos));
+        atualizarListaRecursos();
+        atualizarGrafico();
+        alert("Todos os recursos foram removidos com sucesso!");
+    }
+});
+
+const init = () => {
+    carregarUsuarios();
+    carregarRecursos();
+    atualizarGrafico();
+
+    if (recursos.length > 0) {
+        document.querySelector("#listaRecursosCard").style.display ="none";
+    }
+};
+
+init();
+
+
