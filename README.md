@@ -1,4 +1,4 @@
-# Ind-strias-Wayne---Project
+# Indústrias-Wayne---Project
 Projeto - Sistema de Gerenciamento de Segurança.
 
 PROJETO FINAL:
