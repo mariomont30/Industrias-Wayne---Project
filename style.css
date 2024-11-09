@@ -44,14 +44,25 @@ body {
     border: 2px solid #3498DB;
     box-sizing: border-box;
     flex-wrap: wrap;
+    position: relative;
 }
 
-.logo {
-    height: 60px;
-    max-width: 100px; 
-    object-fit: contain; 
-    margin: 0 10px; 
-    flex-shrink: 0;
+.logo-left,
+.logo-right {
+    height: 50px;
+    max-width: 90px;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo-left {
+    left: 20px;
+}
+
+.logo-right {
+    right: 20px;
 }
 
 .header-text {
@@ -67,10 +78,11 @@ body {
     border-radius: 10px;
     margin: 0 15px; 
     box-sizing: border-box;
+    max-width: calc(100% - 180px);
 }
 
 .header-text h1 {
-    font-size: 1.2rem; 
+    font-size: 1.5rem; 
     font-weight: bold;
     margin: 0 0 3px 0; 
     text-shadow: 0 0 10px rgba(0, 255, 191, 0.8), 0 0 20px rgba(0, 255, 191, 0.6);
@@ -79,7 +91,7 @@ body {
 }
 
 .header-text p {
-    font-size: 1.1rem; 
+    font-size: 1rem; 
     font-weight: bold;
     margin: 0; 
     color: #b1b0b0; 
@@ -596,8 +608,7 @@ main {
 .footer-content {
     text-align: center;
     padding: 15px;
-    color: #fff;
-    position: absolute;
+    color: #fff;    
     bottom: 0;
     width: 100%;
     background: transparent;
@@ -648,7 +659,7 @@ li {
         padding: 15px 30px;        
     }
     .header-text h1 {
-        font-size: 64px;
+        font-size: 2rem;
     }
     .horizontal-card-container {
         display: flex;
@@ -686,10 +697,28 @@ li {
 }
 
 @media (max-width: 767px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
+    .logo-left,
+    .logo-right {
+        height: 40px;
+        max-width: 70px;
+    }
+    .header-text h1 {
+        font-size: 1.3rem;
+    }
+    .header-text p {
+        font-size: 0.9rem;
+    }
+    .footer-content {
+        margin-top: auto;
+        padding-bottom: 15px;
+        position: relative;
+        bottom: 0;
+    }
+        main {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
     }
 
     .logo {
@@ -704,7 +733,6 @@ li {
     .header-text p {
         font-size: 0.9rem;
     }
-}
 
     .horizontal-card-container {
         flex-direction: column;
@@ -726,19 +754,27 @@ li {
         font-size: 24px;
     }
 
-@media (max-width: 480px) {
-    .header-container {
-        padding: 10px;
-    }
-    .header-text h1 {
-        font-size: 24px;
-    }
+    @media (max-width: 480px) {
+        .header-container {
+            padding: 10px;
+        }
+        .header-text h1 {
+            font-size: 24px;
+        }
+        .footer-content {
+            margin-top: auto;
+            padding-bottom: 15px;
+            position: relative;
+            bottom: 0;
+        }   
+
     #gerenciamentoRecursos,
     #listaRecursosCard,
     #painelControle {
         width: 100%;
         padding: 15px;
     }
+
     .card-container {
         margin: 10px;
     }
@@ -747,5 +783,77 @@ li {
     }
     .item-info {
         font-size: 12px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .header-container {
+        max-width: 1000px;
+        padding: 15px 30px;
+    }
+    .header-text h1 {
+        font-size: 64px;
+    }
+    .horizontal-card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 400px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header-container {
+        padding: 20px;
+    }
+    .header-text h1 {
+        font-size: 48px;
+    }
+    .horizontal-card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 350px;
+    }
+    .card-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+    .header-text h1 {
+        font-size: 32px;
+    }
+    .horizontal-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #gerenciamentoRecursos,
+    #listaRecursosCard,
+    #painelControle {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    #gerenciamentoRecursos h2 {
+        font-size: 24px;
     }
 }
