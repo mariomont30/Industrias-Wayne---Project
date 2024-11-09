@@ -36,22 +36,20 @@ body {
     max-width: 1300px;
     margin: 20px auto; 
     margin-top: 30px;
-    padding: 0 25px; 
-    height: 120px; 
+    padding: 0 15px; 
+    height: auto;
     background: rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid #3498DB;
-    position: relative;
     box-sizing: border-box;
 }
 
 .logo {
-    position: fixed;
-    height: 80px;
+    height: auto;
     top: 20px;
     left: 20;
-    max-width: 150px; 
+    max-width: 100px; 
     object-fit: contain; 
     margin: 0 12px; 
 }
