@@ -446,7 +446,7 @@ body {
 }
 
 .login-button:hover {
-    background-color: #005f36;
+    background-color: #160094;
 }
 
 .forgot-password-button {
@@ -454,7 +454,7 @@ body {
 }
 
 .forgot-password-button:hover {
-    background-color: #005f36;
+    background-color: #9f0000;
 }
 
 .new-user-button {
@@ -471,6 +471,14 @@ body {
 
 .register-button:hover {
     background-color: #005f36;
+}
+
+.cancel-button {
+    background-color: #7282fff3;
+}
+
+.cancel-button:hover {
+    background-color: #9f0000;    
 }
 
 .logout-button {
