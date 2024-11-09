@@ -87,7 +87,7 @@ html
                     </div>
                     <div class="button-container" style="justify-content: center;"> 
                         <button type="button" class="register-button" id="cadastrarUsuario">Cadastrar</button>
-                        <button type="button" class="register-button" id="cancelarCadastro">Cancelar</button>
+                        <button type="button" class="cancel-button" id="cancelarCadastro">Cancelar</button>
                     </div>
                 </form>
             </section>
@@ -222,7 +222,7 @@ body {
     margin: 20px auto;
     margin-top: 30px;		
     padding: 0 25px; 
-    height: 120px; 
+    height: auto; 
     background: rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -254,7 +254,7 @@ body {
 }
 
 .header-text h1 {
-    font-size: 1.2rem; 
+    font-size: 2.3rem; 
     font-weight: bold;
     margin: 0 0 3px 0; 
     text-shadow: 0 0 10px rgba(0, 255, 191, 0.8), 0 0 20px rgba(0, 255, 191, 0.6);
@@ -263,7 +263,7 @@ body {
 }
 
 .header-text p {
-    font-size: 1.1rem; 
+    font-size: 1rem; 
     font-weight: bold;
     margin: 0; 
     color: #b1b0b0; 
@@ -631,7 +631,7 @@ body {
 }
 
 .login-button:hover {
-    background-color: #005f36;
+    background-color: #160094;
 }
 
 .forgot-password-button {
@@ -639,7 +639,7 @@ body {
 }
 
 .forgot-password-button:hover {
-    background-color: #005f36;
+    background-color: #9f0000;
 }
 
 .new-user-button {
@@ -656,6 +656,14 @@ body {
 
 .register-button:hover {
     background-color: #005f36;
+}
+
+.cancel-button {
+    background-color: #7282fff3;
+}
+
+.cancel-button:hover {
+    background-color: #9f0000;    
 }
 
 .logout-button {
@@ -824,102 +832,6 @@ li {
     background: linear-gradient(135deg, rgba(9, 94, 178, 0.9), rgba(10, 245, 237, 0.9));
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-@media (min-width: 1024px) {
-    .header-container {
-        padding: 30px;
-    }
-    .header-text h1 {
-        font-size: 64px;
-    }
-    .horizontal-card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 400px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .header-container {
-        padding: 20px;
-    }
-    .header-text h1 {
-        font-size: 48px;
-    }
-    .horizontal-card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 15px;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 350px;
-    }
-    .card-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-@media (max-width: 767px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-    }
-    .header-text h1 {
-        font-size: 32px;
-    }
-    .horizontal-card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    #gerenciamentoRecursos h2 {
-        margin-bottom: 1px;
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-container {
-        padding: 10px;
-    }
-    .header-text h1 {
-        font-size: 24px;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 100%;
-        padding: 15px;
-    }
-    .card-container {
-        margin: 10px;
-    }
-    #listaRecursos li {
-        font-size: 16px;
-    }
-    .item-info {
-        font-size: 12px;
-    }
 }
 
 
@@ -1872,6 +1784,11 @@ document.querySelector("#removerTodosRecursos").addEventListener("click", () => 
         return;
     }
 
+    if (recursos.length === 0) {
+        alert("Não há recursos para remover.");
+        return;
+    }
+
     if (confirm("Tem certeza que deseja remover todos os recursos? Esta ação não poderá ser desfeita.")) {
         recursos = [];
         localStorage.setItem('recursos', JSON.stringify(recursos));
@@ -1880,6 +1797,7 @@ document.querySelector("#removerTodosRecursos").addEventListener("click", () => 
         alert("Todos os recursos foram removidos com sucesso!");
     }
 });
+
 
 const init = () => {
     carregarUsuarios();
@@ -1892,5 +1810,3 @@ const init = () => {
 };
 
 init();
-
-
