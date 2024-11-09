@@ -26,51 +26,31 @@ body {
     line-height: 1.6;
     position: relative;
     min-height: 100vh;
-    font-size: 16px;
-}
-
-body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
 }
 
 .header-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center; 
     width: 100%;
     max-width: 1300px;
     margin: 20px auto;
-    padding: 10px 20px; 
+    margin-top: 30px;		
+    padding: 0 25px; 
     height: auto; 
     background: rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid #3498DB;
-    box-sizing: border-box;
-    flex-wrap: wrap;
     position: relative;
+    box-sizing: border-box;
 }
 
-.logo-left,
-.logo-right {
-    height: 50px;
-    max-width: 90px;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.logo-left {
-    left: 20px;
-}
-
-.logo-right {
-    right: 20px;
+.logo {
+    height: 80px;
+    max-width: 150px; 
+    object-fit: contain; 
+    margin: 0 12px; 
 }
 
 .header-text {
@@ -86,11 +66,10 @@ body, html {
     border-radius: 10px;
     margin: 0 15px; 
     box-sizing: border-box;
-    max-width: calc(100% - 180px);
 }
 
 .header-text h1 {
-    font-size: 2rem; 
+    font-size: 2.3rem; 
     font-weight: bold;
     margin: 0 0 3px 0; 
     text-shadow: 0 0 10px rgba(0, 255, 191, 0.8), 0 0 20px rgba(0, 255, 191, 0.6);
@@ -616,11 +595,11 @@ main {
 .footer-content {
     text-align: center;
     padding: 15px;
-    color: #fff;    
+    color: #fff;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background: transparent;
-    margin-top: auto;
 }
 
 #graficoContainer:hover {
@@ -660,236 +639,4 @@ li {
     background: linear-gradient(135deg, rgba(9, 94, 178, 0.9), rgba(10, 245, 237, 0.9));
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-@media (min-width: 1024px) {
-    .header-container {
-        max-width: 1000px;
-        padding: 15px 30px;    
-        flex-direction: column; 
-        align-items: center;    
-    }
-    .header-text h1 {
-        font-size: 2rem;
-    }
-    .horizontal-card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        flex-direction: column;
-        align-items: center;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 90px;
-        margin: 10px 0;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .header-container {
-        padding: 20px;
-    }
-    .header-text h1 {
-        font-size: 1.5rem;
-    }
-    .header-text p{
-        font-size: 0.9rm;
-    }
-    #listaRecursos li{
-        font-size: 1rem;
-    }
-    .horizontal-card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 15px;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 350px;
-    }
-    .card-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-@media (max-width: 767px) {
-    .logo-left,
-    .logo-right {
-        height: 40px;
-        max-width: 70px;
-    }
-    .header-text h1 {
-        font-size: 1.3rem;
-    }
-    .header-text p {
-        font-size: 0.9rem;
-    }
-    .footer-content {
-        margin-top: auto;
-        padding-bottom: 20px;
-        position: relative;
-        bottom: 0;
-    }
-        main {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-    }
-
-    .logo {
-        height: 40px;
-        max-width: 70px;
-    }
-
-    .header-text h1 {
-        font-size: 1.3rem;
-    }
-
-    .header-text p {
-        font-size: 0.9rem;
-    }
-
-    .horizontal-card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    #gerenciamentoRecursos h2 {
-        margin-bottom: 1px;
-        font-size: 24px;
-    }
-
-    @media (max-width: 480px) {
-        .header-container {
-            padding: 10px;
-        }
-        .header-text h1 {
-            font-size: 1.3rem;
-        }
-        .footer-content {
-            margin-top: auto;
-            padding-bottom: 30px;
-            position: relative;
-            bottom: 0;
-        }   
-        .card-container {
-            flex-direction: column;
-            align-items: center;
-        }
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 15px;
-        }
-        .button {
-            padding: 10px 20px;
-            border-radius: 8px;
-        }
-        .button:hover {
-            transform: translateY(-2px);
-        }
-
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .card-container {
-        margin: 10px;
-    }
-    #listaRecursos li {
-        font-size: 16px;
-    }
-    .item-info {
-        font-size: 12px;
-    }
-}
-
-@media (min-width: 1024px) and (max-width: 1199px) {
-    .header-container {
-        max-width: 1000px;
-        padding: 15px 30px;
-    }
-    .header-text h1 {
-        font-size: 64px;
-    }
-    .horizontal-card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 400px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .header-container {
-        padding: 20px;
-    }
-    .header-text h1 {
-        font-size: 48px;
-    }
-    .horizontal-card-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 15px;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 350px;
-    }
-    .card-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-    }
-    .header-text h1 {
-        font-size: 32px;
-    }
-    .horizontal-card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    #gerenciamentoRecursos,
-    #listaRecursosCard,
-    #painelControle {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    #gerenciamentoRecursos h2 {
-        font-size: 24px;
-    }
 }
