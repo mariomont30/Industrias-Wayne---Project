@@ -939,6 +939,11 @@ document.querySelector("#removerTodosRecursos").addEventListener("click", () => 
         return;
     }
 
+    if (recursos.length === 0) {
+        alert("Não há recursos para remover.");
+        return;
+    }
+
     if (confirm("Tem certeza que deseja remover todos os recursos? Esta ação não poderá ser desfeita.")) {
         recursos = [];
         localStorage.setItem('recursos', JSON.stringify(recursos));
