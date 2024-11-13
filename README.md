@@ -1,7 +1,7 @@
 # Indústrias-Wayne---Project #
 --- Projeto - Sistema de Gerenciamento de Segurança. ---
 
->>> Resumo da Documentação - Indústrias Wayne - Sistema de Gerenciamento de Segurança. <<<
+>>> Resumo da Documentação - Indústrias Wayne - Sistema de Gerenciamento de Segurança.
 
 
 ## Introdução:
@@ -14,9 +14,9 @@
 
 
 - *Cadastro de Usuários:* > Permitir a criação de novos usuários com diferentes níveis de acesso.
-- 
+  
 - *Gerenciamento de Recursos:* > Facilitar a adição, edição e remoção de recursos, assegurando que apenas usuários autorizados possam realizar essas ações.
-- 
+  
 - *Visualização de Dados:* > Fornecer uma representação gráfica da quantidade de recursos, permitindo uma análise rápida.
 
 
