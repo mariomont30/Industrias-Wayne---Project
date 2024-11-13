@@ -23,6 +23,7 @@ O Sistema de Gerenciamento de Segurança das Indústrias Wayne é uma aplicaçã
 
 
 /wayne-security-system
+
 |-- index.html       # Página principal da aplicação
 |-- style.css        # Estilos e layout da aplicação
 |-- script.js        # Lógica e comportamento da aplicação
